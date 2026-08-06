@@ -95,7 +95,7 @@ export const initialServices: Service[] = [
     category: 'Chăm Sóc Da',
     branch_ids: ['br-1', 'br-2'],
     is_active: true,
-    image: 'https://images.unsplash.com/photo-1512290900673-7002ddb97b09?auto=format&fit=crop&w=600&q=80'
+    image: 'https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?&auto=format&fit=crop&w=600&q=80'
   }
 ];
 

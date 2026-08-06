@@ -22,6 +22,7 @@ import { AdminBranchMgmt } from './components/admin/AdminBranchMgmt';
 import { AdminCustomerMgmt } from './components/admin/AdminCustomerMgmt';
 import { AdminReports } from './components/admin/AdminReports';
 import { AdminSettings } from './components/admin/AdminSettings';
+import ScrollToTop from './components/common/ScrollToTop';
 
 const AppContent: React.FC = () => {
   return (
@@ -39,103 +40,103 @@ const AppContent: React.FC = () => {
           <Route path="/booking" element={<BookingWizard />} />
 
           {/* Protected Client Routes */}
-          <Route 
-            path="/my-bookings" 
+          <Route
+            path="/my-bookings"
             element={
               <ProtectedRoute allowedRoles={['client', 'super_admin', 'branch_manager', 'staff']}>
                 <MyBookingsView />
               </ProtectedRoute>
-            } 
+            }
           />
-          <Route 
-            path="/profile" 
+          <Route
+            path="/profile"
             element={
               <ProtectedRoute allowedRoles={['client', 'super_admin', 'branch_manager', 'staff']}>
                 <UserProfileView />
               </ProtectedRoute>
-            } 
+            }
           />
 
           {/* Protected Admin Routes */}
-          <Route 
-            path="/admin" 
+          <Route
+            path="/admin"
             element={
               <ProtectedRoute allowedRoles={['super_admin', 'branch_manager', 'staff']}>
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
                   <AdminDashboard />
                 </div>
               </ProtectedRoute>
-            } 
+            }
           />
-          <Route 
-            path="/admin/bookings" 
+          <Route
+            path="/admin/bookings"
             element={
               <ProtectedRoute allowedRoles={['super_admin', 'branch_manager', 'staff']}>
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
                   <AdminBookingCalendar />
                 </div>
               </ProtectedRoute>
-            } 
+            }
           />
-          <Route 
-            path="/admin/services" 
+          <Route
+            path="/admin/services"
             element={
               <ProtectedRoute allowedRoles={['super_admin', 'branch_manager']}>
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
                   <AdminServiceMgmt />
                 </div>
               </ProtectedRoute>
-            } 
+            }
           />
-          <Route 
-            path="/admin/staff" 
+          <Route
+            path="/admin/staff"
             element={
               <ProtectedRoute allowedRoles={['super_admin', 'branch_manager']}>
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
                   <AdminStaffMgmt />
                 </div>
               </ProtectedRoute>
-            } 
+            }
           />
-          <Route 
-            path="/admin/branches" 
+          <Route
+            path="/admin/branches"
             element={
               <ProtectedRoute allowedRoles={['super_admin']}>
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
                   <AdminBranchMgmt />
                 </div>
               </ProtectedRoute>
-            } 
+            }
           />
-          <Route 
-            path="/admin/customers" 
+          <Route
+            path="/admin/customers"
             element={
               <ProtectedRoute allowedRoles={['super_admin', 'branch_manager', 'staff']}>
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
                   <AdminCustomerMgmt />
                 </div>
               </ProtectedRoute>
-            } 
+            }
           />
-          <Route 
-            path="/admin/reports" 
+          <Route
+            path="/admin/reports"
             element={
               <ProtectedRoute allowedRoles={['super_admin', 'branch_manager']}>
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
                   <AdminReports />
                 </div>
               </ProtectedRoute>
-            } 
+            }
           />
-          <Route 
-            path="/admin/settings" 
+          <Route
+            path="/admin/settings"
             element={
               <ProtectedRoute allowedRoles={['super_admin']}>
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
                   <AdminSettings />
                 </div>
               </ProtectedRoute>
-            } 
+            }
           />
 
           {/* Fallback route */}
@@ -152,6 +153,7 @@ const AppContent: React.FC = () => {
 export default function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <AppProvider>
         <AppContent />
       </AppProvider>
