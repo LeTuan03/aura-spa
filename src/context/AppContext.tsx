@@ -7,6 +7,7 @@ import {
   initialBranches, initialServices, initialUsers, initialBookings, 
   initialReviews, initialSettings, initialNotifications, initialSchedules, initialStaffServices 
 } from '../data/mockData';
+import { format } from 'date-fns';
 
 interface AppContextType {
   currentUser: User;
@@ -296,31 +297,41 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     }
 
     // Now step through the day
+    const now = new Date();
+    const isToday = dateStr === format(now, 'yyyy-MM-dd');
+    const nowMinutes = now.getHours() * 60 + now.getMinutes();
+
     for (let m = openMinutes; m + totalDurationMinutes <= closeMinutes; m += interval) {
       const slotH = Math.floor(m / 60);
       const slotM = m % 60;
       const slotTimeStr = `${String(slotH).padStart(2, '0')}:${String(slotM).padStart(2, '0')}`;
       const proposedEndM = m + totalDurationMinutes;
 
-      // Check collision with existing bookings
       let hasConflict = false;
-      for (const bk of dayBookings) {
-        const [bkStartH, bkStartM] = bk.start_time.split(':').map(Number);
-        const [bkEndH, bkEndM] = bk.end_time.split(':').map(Number);
-        const bkStartMinutes = bkStartH * 60 + bkStartM;
-        const bkEndMinutes = bkEndH * 60 + bkEndM + settings.buffer_time_minutes;
+      let reason: string | undefined;
 
-        // Overlap: (proposedStart < existingEnd) && (proposedEnd > existingStart)
-        if (m < bkEndMinutes && proposedEndM > bkStartMinutes) {
-          hasConflict = true;
-          break;
+      if (isToday && m <= nowMinutes) {
+        hasConflict = true;
+        reason = 'Đã qua thời gian này';
+      } else {
+        for (const bk of dayBookings) {
+          const [bkStartH, bkStartM] = bk.start_time.split(':').map(Number);
+          const [bkEndH, bkEndM] = bk.end_time.split(':').map(Number);
+          const bkStartMinutes = bkStartH * 60 + bkStartM;
+          const bkEndMinutes = bkEndH * 60 + bkEndM + settings.buffer_time_minutes;
+
+          if (m < bkEndMinutes && proposedEndM > bkStartMinutes) {
+            hasConflict = true;
+            reason = 'Đã có lịch hẹn';
+            break;
+          }
         }
       }
 
       slots.push({
         time: slotTimeStr,
         available: !hasConflict,
-        reason: hasConflict ? 'Đã có lịch hẹn' : undefined
+        reason
       });
     }
 
