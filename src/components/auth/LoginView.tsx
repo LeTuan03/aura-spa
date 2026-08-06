@@ -129,7 +129,7 @@ export const LoginView: React.FC = () => {
         {/* Left — atmosphere / brand panel (desktop only) */}
         <div className="relative hidden md:flex flex-col justify-between overflow-hidden px-10 lg:px-16 py-12 border-r border-[#d4af6a]/10">
           <img
-            src="/src/assets/images/spa_reception_lobby_1785988995306.jpg"
+            src="/images/spa_reception_lobby_1785988995306.jpg"
             alt=""
             referrerPolicy="no-referrer"
             className="absolute inset-0 w-full h-full object-cover object-center opacity-45 scale-105"

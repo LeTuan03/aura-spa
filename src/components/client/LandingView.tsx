@@ -10,27 +10,27 @@ interface LandingViewProps {
 const HERO_SLIDES = [
   {
     id: 'slide-1',
-    image: '/src/assets/images/spa_facial_treatment_1785988817999.jpg',
+    image: '/images/spa_facial_treatment_1785988817999.jpg',
     title: 'Trị Liệu & Chăm Sóc Da Chuyên Sâu 5 Sao'
   },
   {
     id: 'slide-2',
-    image: '/src/assets/images/luxury_spa_hero_1785988061075.jpg',
+    image: '/images/luxury_spa_hero_1785988061075.jpg',
     title: 'Aura Spa - Không Gian Sang Trọng'
   },
   {
     id: 'slide-3',
-    image: '/src/assets/images/spa_head_wash_lounge_1785988830083.jpg',
+    image: '/images/spa_head_wash_lounge_1785988830083.jpg',
     title: 'Gội Đầu Dưỡng Sinh & Massage Cổ Vai Gáy'
   },
   {
     id: 'slide-4',
-    image: '/src/assets/images/spa_aromatherapy_lounge_1785988973477.jpg',
+    image: '/images/spa_aromatherapy_lounge_1785988973477.jpg',
     title: 'Phòng Thư Giãn Hương Thảo Mộc Độc Quyền'
   },
   {
     id: 'slide-5',
-    image: '/src/assets/images/spa_reception_lobby_1785988995306.jpg',
+    image: '/images/spa_reception_lobby_1785988995306.jpg',
     title: 'Sảnh Đón Tiếp Đẳng Cấp 5 Sao Trung Tâm HCM'
   }
 ];
