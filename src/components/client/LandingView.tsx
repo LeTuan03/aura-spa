@@ -95,6 +95,7 @@ export const LandingView: React.FC<LandingViewProps> = ({ onNavigate }) => {
               alt={slide.title}
               referrerPolicy="no-referrer"
               className="w-full h-full object-cover object-center filter brightness-[0.92] contrast-[1.03]"
+              loading='lazy'
             />
             {/* Subtle Vignette & Gradient Borders for Premium Look */}
             <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0c] via-transparent to-[#0a0a0c]/40"></div>
@@ -190,6 +191,7 @@ export const LandingView: React.FC<LandingViewProps> = ({ onNavigate }) => {
                       src={srv.image}
                       alt={srv.name}
                       className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                      loading='lazy'
                     />
                     <span className="absolute top-2 left-2 bg-black/75 text-white text-[10px] font-medium px-2 py-0.5 rounded-[5px]">
                       {srv.category}
@@ -284,7 +286,7 @@ export const LandingView: React.FC<LandingViewProps> = ({ onNavigate }) => {
             {branches.map(b => (
               <div key={b.id} className="border border-zinc-200 rounded-[5px] overflow-hidden bg-white">
                 <div className="h-48 overflow-hidden bg-zinc-100">
-                  <img src={b.image} alt={b.name} className="w-full h-full object-cover" />
+                  <img src={b.image} alt={b.name} className="w-full h-full object-cover" loading='lazy' />
                 </div>
                 <div className="p-5 space-y-2">
                   <h3 className="font-bold text-base text-black">{b.name}</h3>
