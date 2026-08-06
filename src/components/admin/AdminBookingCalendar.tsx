@@ -2,16 +2,16 @@ import React, { useState } from 'react';
 import { useApp } from '../../context/AppContext';
 import { Booking, BookingStatus } from '../../types';
 import { Badge } from '../common/Badge';
-import { 
-  Calendar, Plus, Filter, Search, Clock, MapPin, 
+import {
+  Calendar, Plus, Filter, Search, Clock, MapPin,
   UserCheck, Check, X, AlertCircle, Trash2, Edit
 } from 'lucide-react';
 import { format, addDays, startOfWeek, endOfWeek, eachDayOfInterval } from 'date-fns';
 
 export const AdminBookingCalendar: React.FC = () => {
-  const { 
-    bookings, branches, services, users, updateBookingStatus, 
-    createBooking, currentUser 
+  const {
+    bookings, branches, services, users, updateBookingStatus,
+    createBooking, currentUser
   } = useApp();
 
   const todayStr = format(new Date(), 'yyyy-MM-dd');
@@ -103,7 +103,7 @@ export const AdminBookingCalendar: React.FC = () => {
 
   return (
     <div className="space-y-6">
-      
+
       {/* Title & Top Toolbar */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
@@ -127,7 +127,7 @@ export const AdminBookingCalendar: React.FC = () => {
       {/* Search & Filters */}
       <div className="bg-white border border-[#e5e5e5] rounded-[5px] p-4 shadow-xs space-y-3">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-12 gap-3">
-          
+
           <div className="md:col-span-4 relative">
             <Search className="w-4 h-4 text-zinc-400 absolute left-3 top-3" />
             <input
@@ -169,25 +169,22 @@ export const AdminBookingCalendar: React.FC = () => {
           <div className="md:col-span-2 flex items-center bg-zinc-100 p-1 rounded-[5px]">
             <button
               onClick={() => setViewMode('day')}
-              className={`flex-1 py-1 text-[11px] font-semibold rounded-[5px] transition-all ${
-                viewMode === 'day' ? 'bg-white text-black shadow-xs' : 'text-zinc-600'
-              }`}
+              className={`flex-1 py-1 text-[11px] font-semibold rounded-[5px] transition-all ${viewMode === 'day' ? 'bg-white text-black shadow-xs' : 'text-zinc-600'
+                }`}
             >
               Ngày
             </button>
             <button
               onClick={() => setViewMode('week')}
-              className={`flex-1 py-1 text-[11px] font-semibold rounded-[5px] transition-all ${
-                viewMode === 'week' ? 'bg-white text-black shadow-xs' : 'text-zinc-600'
-              }`}
+              className={`flex-1 py-1 text-[11px] font-semibold rounded-[5px] transition-all ${viewMode === 'week' ? 'bg-white text-black shadow-xs' : 'text-zinc-600'
+                }`}
             >
               Tuần
             </button>
             <button
               onClick={() => setViewMode('list')}
-              className={`flex-1 py-1 text-[11px] font-semibold rounded-[5px] transition-all ${
-                viewMode === 'list' ? 'bg-white text-black shadow-xs' : 'text-zinc-600'
-              }`}
+              className={`flex-1 py-1 text-[11px] font-semibold rounded-[5px] transition-all ${viewMode === 'list' ? 'bg-white text-black shadow-xs' : 'text-zinc-600'
+                }`}
             >
               Danh sách
             </button>
@@ -228,13 +225,13 @@ export const AdminBookingCalendar: React.FC = () => {
               return (
                 <div key={hour} className="py-2.5 flex flex-col xs:flex-row items-start gap-2 xs:gap-4">
                   <span className="w-16 text-xs font-bold text-zinc-500 pt-1 shrink-0">{hour}</span>
-                  
+
                   <div className="w-full xs:flex-1 min-h-[44px] bg-zinc-50/60 border border-zinc-200/60 rounded-[5px] p-2 flex flex-wrap items-center gap-2">
                     {hourBookings.length === 0 ? (
                       <span className="text-[11px] text-zinc-400 italic">Trống slot</span>
                     ) : (
                       hourBookings.map(bk => (
-                        <div 
+                        <div
                           key={bk.id}
                           className="bg-white border border-zinc-300 hover:border-zinc-900 rounded-[5px] p-2.5 shadow-2xs transition-all duration-400 text-xs space-y-1.5 w-full sm:w-auto min-w-0 sm:min-w-[240px] max-w-full"
                         >
@@ -296,16 +293,16 @@ export const AdminBookingCalendar: React.FC = () => {
 
       {/* WEEK VIEW */}
       {viewMode === 'week' && (
-        <div className="bg-white border border-[#e5e5e5] rounded-[5px] p-6 shadow-xs overflow-x-auto">
-          <div className="min-w-[700px]">
+        <div className="bg-white border border-[#e5e5e5] rounded-[5px] p-4 md:p-6 shadow-xs overflow-x-auto">
+          <div className="min-w-[1200px] md:min-w-[700px]">
             <div className="grid grid-cols-7 gap-2 border-b border-zinc-200 pb-3 mb-4 text-center">
               {weekDays.map(d => {
                 const dateStr = format(d, 'yyyy-MM-dd');
                 const isToday = dateStr === todayStr;
                 return (
-                  <div key={dateStr} className={`p-2 rounded-[5px] ${isToday ? 'bg-zinc-900 text-white font-bold' : 'bg-zinc-50 text-zinc-800'}`}>
-                    <span className="block text-[10px] uppercase">{format(d, 'EEE')}</span>
-                    <span className="block text-xs font-bold">{format(d, 'dd/MM')}</span>
+                  <div key={dateStr} className={`p-2 rounded-[5px] min-w-[160px] md:min-w-[150px] ${isToday ? 'bg-zinc-900 text-white font-bold' : 'bg-zinc-50 text-zinc-800'}`}>
+                    <span className="block text-[11px] uppercase">{format(d, 'EEE')}</span>
+                    <span className="block text-sm font-bold">{format(d, 'dd/MM')}</span>
                   </div>
                 );
               })}
@@ -316,18 +313,18 @@ export const AdminBookingCalendar: React.FC = () => {
                 const dateStr = format(d, 'yyyy-MM-dd');
                 const dayBks = filteredBookings.filter(b => b.date === dateStr);
                 return (
-                  <div key={dateStr} className="min-h-[180px] bg-zinc-50 border border-zinc-200 rounded-[5px] p-2 space-y-2">
+                  <div key={dateStr} className="min-h-[180px] bg-zinc-50 border border-zinc-200 rounded-[5px] p-2 space-y-2 min-w-[160px] md:min-w-[150px]">
                     {dayBks.length === 0 ? (
-                      <span className="text-[10px] text-zinc-400 block text-center pt-4">Không có đơn</span>
+                      <span className="text-[11px] text-zinc-400 block text-center pt-4">Không có đơn</span>
                     ) : (
                       dayBks.map(bk => (
-                        <div key={bk.id} className="p-2 bg-white border border-zinc-200 rounded-[5px] text-[11px] space-y-1 shadow-2xs">
+                        <div key={bk.id} className="p-2 bg-white border border-zinc-200 rounded-[5px] text-xs space-y-1 shadow-2xs">
                           <div className="font-bold text-black flex justify-between">
                             <span>{bk.start_time}</span>
                             <Badge status={bk.status} className="text-[9px] px-1 py-0" />
                           </div>
                           <p className="font-semibold text-zinc-800 truncate">{bk.customer_name}</p>
-                          <p className="text-[10px] text-[#8e8ea0] truncate">{bk.services[0]?.service_name}</p>
+                          <p className="text-[11px] text-[#8e8ea0] truncate">{bk.services[0]?.service_name}</p>
                         </div>
                       ))
                     )}

@@ -148,7 +148,7 @@ export const Navbar: React.FC = () => {
             {!isAdminRole && (
               <Link
                 to="/booking"
-                className="bg-zinc-800 hover:bg-zinc-800 text-white px-2.5 sm:px-4 py-1.5 sm:py-2 rounded-[5px] text-xs sm:text-sm font-semibold flex items-center gap-1.5 shadow-xs transition-all duration-400 active:scale-[0.98]"
+                className="bg-zinc-800 hover:bg-zinc-900 text-white px-2.5 sm:px-4 py-1.5 sm:py-2 rounded-[5px] text-xs sm:text-sm font-semibold flex items-center gap-1.5 shadow-xs transition-all duration-400 active:scale-[0.98]"
               >
                 <span className="hidden xs:inline">Đặt lịch ngay</span>
                 <span className="xs:hidden">Đặt lịch</span>
@@ -329,7 +329,7 @@ export const Navbar: React.FC = () => {
             ) : (
               <Link
                 to="/login"
-                className="bg-zinc-900 hover:bg-zinc-800 text-white px-3 py-1.5 rounded-[5px] text-xs font-bold flex items-center gap-1.5 transition-all shadow-xs"
+                className="bg-zinc-800 hover:bg-zinc-900 text-white px-3 py-2.5 rounded-[5px] text-xs font-bold flex items-center gap-1.5 transition-all shadow-xs"
               >
                 <LogIn className="w-4 h-4 text-amber-300" />
                 <span>Đăng Nhập</span>
