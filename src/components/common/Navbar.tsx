@@ -78,7 +78,7 @@ export const Navbar: React.FC = () => {
               to={isAdminRole ? '/admin' : '/'}
               className="flex items-center gap-2 text-left group transition-all"
             >
-              <img src="/src/assets/logo.png" alt="Aura Spa Logo" className="w-6 h-8" />
+              <img src="/images/logo.png" alt="Aura Spa Logo" className="w-6 h-8" />
               <div>
                 <span className="font-bold text-sm sm:text-base text-black tracking-tight">
                   Aura Spa
